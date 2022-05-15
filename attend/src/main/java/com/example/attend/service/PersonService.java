@@ -7,6 +7,8 @@ import com.example.attend.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -16,16 +18,19 @@ public class PersonService {
     PersonRepository personRepository;
 
 
+    // 모든 정보를 가져오는 getALL 함수
     public List<Person> getAll()
     {
         return (List<Person>) personRepository.findAll();
     }
 
+    // 한 명의 정보를 가져오는 get 함수
     public Person get(Long id)
     {
         return personRepository.findById(id).orElse(null);
     }
 
+    // 인원 한 명을 추가하는 Add 함수
     public Person Add(PersonDto personDto)
     {
         Person target = personDto.toEntity();
@@ -33,7 +38,7 @@ public class PersonService {
         return personRepository.save(target);
     }
 
-
+    // 인원 한 명을 수정하는 update 함수
     public Person udpate(PersonDto personDto, Long id) {
 
         Person target = personRepository.findById(id).orElse(null);
@@ -44,8 +49,15 @@ public class PersonService {
     }
 
 
-    public Person attend(PersonDto personDto) {
-        
+    // 인원 한 명의 출석 시간을 계산하는 attend 함수
+    public Person attend(Long id) {
+        Person target = personRepository.findById(id).orElse(null);
+        Duration todayTime = Duration.between(target.getStartTime(),target.getLeaveTime());
+        target.setLeaveTime(LocalDateTime.now());
+        target.setTodayTime(todayTime.getSeconds());
+        personRepository.save(target);
+        return personRepository.save(target);
+
     }
 
 }

@@ -22,7 +22,7 @@ public class PersonDto {
 
     private LocalDateTime leaveTime;
 
-    private LocalDateTime todayTime;
+    private Long todayTime;
 
     public Person toEntity() {
 

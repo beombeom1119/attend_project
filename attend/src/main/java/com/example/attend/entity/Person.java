@@ -33,7 +33,7 @@ public class Person {
     private LocalDateTime leaveTime;
 
     @Column
-    private LocalDateTime todayTime;
+    private Long todayTime;
 
 
     public void patch(Person person) {
