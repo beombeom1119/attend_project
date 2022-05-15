@@ -25,8 +25,7 @@ public class PersonDto {
     private Long todayTime;
 
     public Person toEntity() {
-
         return new Person(id,name,part,startTime,leaveTime,todayTime);
-
     }
+
 }

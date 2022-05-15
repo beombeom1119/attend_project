@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @Entity
 public class Person {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -57,8 +56,6 @@ public class Person {
         {
             this.todayTime = person.todayTime;
         }
-
-
     }
 
 }

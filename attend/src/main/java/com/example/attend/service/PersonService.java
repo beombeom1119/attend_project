@@ -52,12 +52,14 @@ public class PersonService {
     // 인원 한 명의 출석 시간을 계산하는 attend 함수
     public Person attend(Long id) {
         Person target = personRepository.findById(id).orElse(null);
+        // 출근 시간과 퇴근 시간을 계산하는 부분 Duration 객체를 생성하여 문제 해결
         Duration todayTime = Duration.between(target.getStartTime(),target.getLeaveTime());
         target.setLeaveTime(LocalDateTime.now());
         target.setTodayTime(todayTime.getSeconds());
         personRepository.save(target);
         return personRepository.save(target);
-
     }
+
+
 
 }

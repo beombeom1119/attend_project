@@ -45,7 +45,5 @@ public class PersonController {
     public Person Attend(@PathVariable Long id) {
         return personService.attend(id);
     }
-
-
-
+    
 }
