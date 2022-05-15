@@ -15,24 +15,35 @@ public class PersonController {
     @Autowired
     PersonService personService;
 
-    @GetMapping("/people")
-    public List<Person> getAll()
-    {
+    @GetMapping("/person")
+    public List<Person> getAll() {
         return personService.getAll();
     }
 
-    @GetMapping("/people/{id}")
-    public Person get(@PathVariable Long id)
-    {
+    @GetMapping("/person/{id}")
+    public Person get(@PathVariable Long id) {
         return personService.get(id);
     }
 
     @PostMapping("/person")
-    public Person Add(@RequestBody PersonDto personDto)
-    {
+    public Person Add(@RequestBody PersonDto personDto) {
         Person person = personService.Add(personDto);
         return person;
     }
+
+    @PutMapping("/person/{id}")
+    public Person Update(@RequestBody PersonDto personDto, @PathVariable Long id) {
+        Person target = personService.udpate(personDto, id);
+        return target;
+    }
+
+    @PostMapping("/person/attend")
+    public Person Add(@RequestBody PersonDto personDto) {
+        Person person = personService.attend(personDto);
+
+    }
+
+
 
 
 }

@@ -1,14 +1,15 @@
 package com.example.attend.dto;
 
 import com.example.attend.entity.Person;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+
 import java.time.LocalDateTime;
 
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class PersonDto {
 
     private Long id;
@@ -17,15 +18,15 @@ public class PersonDto {
 
     private String part;
 
-    private LocalDateTime start;
+    private LocalDateTime startTime;
 
-    private LocalDateTime leave;
+    private LocalDateTime leaveTime;
 
     private LocalDateTime todayTime;
 
     public Person toEntity() {
 
-        return new Person(id,name,part,start,leave,todayTime);
+        return new Person(id,name,part,startTime,leaveTime,todayTime);
 
     }
 }

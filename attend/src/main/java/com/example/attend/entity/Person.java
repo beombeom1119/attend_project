@@ -4,11 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
@@ -39,5 +36,29 @@ public class Person {
     private LocalDateTime todayTime;
 
 
+    public void patch(Person person) {
+        if (person.name!=null)
+        {
+            this.name = person.name;
+        }
+        if (person.part!=null)
+        {
+            this.part = person.part;
+        }
+        if (person.startTime!=null)
+        {
+            this.startTime = person.startTime;
+        }
+        if (person.leaveTime!=null)
+        {
+            this.leaveTime = person.leaveTime;
+        }
+        if (person.todayTime!=null)
+        {
+            this.todayTime = person.todayTime;
+        }
+
+
+    }
 
 }

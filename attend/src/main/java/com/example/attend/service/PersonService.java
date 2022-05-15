@@ -30,8 +30,22 @@ public class PersonService {
     {
         Person target = personDto.toEntity();
         personRepository.save(target);
-        return target;
+        return personRepository.save(target);
     }
 
+
+    public Person udpate(PersonDto personDto, Long id) {
+
+        Person target = personRepository.findById(id).orElse(null);
+        Person updatetarget = personDto.toEntity();
+        target.patch(updatetarget);
+        personRepository.save(target);
+        return personRepository.save(target);
+    }
+
+
+    public Person attend(PersonDto personDto) {
+        
+    }
 
 }
